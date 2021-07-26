@@ -9,27 +9,28 @@ from helpers.filters import other_filters2
 async def start(_, message: Message):
     await message.reply_sticker("CAACAgQAAx0CTv65QgABBfJlYF6VCrGMm6OJ23AxHmD6qUSWESsAAhoQAAKm8XEeD5nrjz5IJFYeBA")
     await message.reply_text(
-        f"""**Hey, I'm {bn} 🎵
+        f"""**👋🏻 halo, saya adalah {bn} ✨
 
-I can play music in your group's voice call. Developed by [Jason](https://t.me/ImJanindu).
+saya dapat memutar musik di voice chat group anda dengan mudah.
+dikelola oleh [Levina](https://t.me/dlwrml).
 
-Add me to your group and play music freely!**
+ingin memutar musik di vcg?, tambahkan saya ke grup anda.**
         """,
         reply_markup=InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton(
-                        "🛠 Source Code 🛠", url="https://github.com/Infinity-Bots/GroupMusicPlayerBot")
+                        "➕ ADD TO YOUR GROUP ➕", url="https://t.me/veezmusicbot?startgroup=true")
                   ],[
                     InlineKeyboardButton(
-                        "💬 Group", url="https://t.me/InfinityBOTs_Support"
+                        "🌻 GROUP SUPPORT 🌻", url="https://t.me/gcsupportbots"
                     ),
                     InlineKeyboardButton(
-                        "🔊 Channel", url="https://t.me/Infinity_BOTs"
+                        "🌸 UPDATES CHANNEL 🌸", url="https://t.me/levinachannel"
                     )
                 ],[ 
                     InlineKeyboardButton(
-                        "➕ Add To Your Group ➕", url="https://t.me/JEGroupMusicPlayerBot?startgroup=true"
+                        "🎁 DONATION", url="https://t.me/dlwrml"
                     )]
             ]
         ),
@@ -38,12 +39,12 @@ Add me to your group and play music freely!**
 
 @Client.on_message(filters.command("start") & ~filters.private & ~filters.channel)
 async def gstart(_, message: Message):
-      await message.reply_text("""**Group Music Player Online ✅**""",
+      await message.reply_text("""**✅ music player is online.**""",
       reply_markup=InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton(
-                        "🔊 Channel", url="https://t.me/Infinity_BOTs")
+                        "🌸 CHANNEL 🌸", url="https://t.me/levinachannel")
                 ]
             ]
         )
