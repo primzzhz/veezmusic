@@ -1,4 +1,4 @@
-# Infinity Bots (https://t.me/Infinity_Bots)
+# Veez Music Bot (https://t.me/veezmusicbot)
 
 import os
 import aiohttp
@@ -22,11 +22,11 @@ from youtube_dl.utils import (
 
 @Client.on_message(filters.command("song") & ~filters.edited)
 async def song(client, message):
-    cap = "@JEBotZ"
+    cap = "@levinachannel"
     url = message.text.split(None, 1)[1]
-    rkp = await message.reply("Processing...")
+    rkp = await message.reply("memproses...")
     if not url:
-        await rkp.edit("**What's the song you want?**\nUsage`/song <song name>`")
+        await rkp.edit("**lagu apa yang ingin anda cari?**\nUsage`/song <nama lagu>`")
     search = SearchVideos(url, offset=1, mode="json", max_results=1)
     test = search.result()
     p = json.loads(test)
@@ -34,7 +34,7 @@ async def song(client, message):
     try:
         url = q[0]["link"]
     except BaseException:
-        return await rkp.edit("Failed to find that song.")
+        return await rkp.edit("gagal menemukan lagu.")
     type = "audio"
     if type == "audio":
         opts = {
@@ -58,7 +58,7 @@ async def song(client, message):
         }
         song = True
     try:
-        await rkp.edit("Downloading...")
+        await rkp.edit("mendownload...")
         with YoutubeDL(opts) as rip:
             rip_data = rip.extract_info(url)
     except DownloadError as DE:
@@ -92,7 +92,7 @@ async def song(client, message):
         return
     time.time()
     if song:
-        await rkp.edit("Uploading...") #ImJanindu
+        await rkp.edit("mengupload...") #levina-lab
         lol = "./etc/thumb.jpg"
         lel = await message.reply_audio(
                  f"{rip_data['id']}.mp3",
@@ -100,5 +100,5 @@ async def song(client, message):
                  title=str(rip_data["title"]),
                  performer=str(rip_data["uploader"]),
                  thumb=lol,
-                 caption=cap)  #JEBotZ
+                 caption=cap)  #veezmusicbot
         await rkp.delete()
