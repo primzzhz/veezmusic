@@ -1,5 +1,3 @@
-# Veez Music Bot (https://t.me/veezmusicbot)
-
 import os
 import aiohttp
 import asyncio
@@ -20,9 +18,10 @@ from youtube_dl.utils import (
     XAttrMetadataError,
 )
 
+
 @Client.on_message(filters.command("music") & ~filters.edited)
 async def song(client, message):
-    cap = "@UserLazyXBot"
+    cap = "@OdaRobot"
     url = message.text.split(None, 1)[1]
     rkp = await message.reply("Processing...")
     if not url:
