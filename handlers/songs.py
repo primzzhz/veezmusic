@@ -20,13 +20,13 @@ from youtube_dl.utils import (
     XAttrMetadataError,
 )
 
-@Client.on_message(filters.command("song") & ~filters.edited)
+@Client.on_message(filters.command("music") & ~filters.edited)
 async def song(client, message):
     cap = "@levinachannel"
     url = message.text.split(None, 1)[1]
-    rkp = await message.reply("memproses...")
+    rkp = await message.reply("Processing...")
     if not url:
-        await rkp.edit("**lagu apa yang ingin anda cari?**\nUsage`/song <nama lagu>`")
+        await rkp.edit("**what song are you looking for?**\nUsage`/song <title>`")
     search = SearchVideos(url, offset=1, mode="json", max_results=1)
     test = search.result()
     p = json.loads(test)
@@ -34,7 +34,7 @@ async def song(client, message):
     try:
         url = q[0]["link"]
     except BaseException:
-        return await rkp.edit("gagal menemukan lagu.")
+        return await rkp.edit("failed to find song.")
     type = "audio"
     if type == "audio":
         opts = {
@@ -58,7 +58,7 @@ async def song(client, message):
         }
         song = True
     try:
-        await rkp.edit("mendownload...")
+        await rkp.edit("Downloading...")
         with YoutubeDL(opts) as rip:
             rip_data = rip.extract_info(url)
     except DownloadError as DE:
@@ -92,7 +92,7 @@ async def song(client, message):
         return
     time.time()
     if song:
-        await rkp.edit("mengupload...") #levina-lab
+        await rkp.edit("Uploading...") #levina-lab
         lol = "./etc/thumb.jpg"
         lel = await message.reply_audio(
                  f"{rip_data['id']}.mp3",
